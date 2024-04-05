@@ -1,0 +1,33 @@
+{
+  "name": "create-tbosmans",
+  "version": "0.0.7",
+  "description": "This is a starter for basic typescript application.",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lit-datory/create-ts-starter.git"
+  },
+  "main": "dist/index.js",
+  "bin": {
+    "create-tbosmans": "dist/index.js"
+  },
+  "files": [
+    "dist/index.js",
+    "templates"
+  ],
+  "scripts": {
+    "start": "tsup --watch src/index.ts",
+    "build": "tsup src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.12.4",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.4"
+  },
+  "dependencies": {
+    "commander": "^12.0.0"
+  }
+}

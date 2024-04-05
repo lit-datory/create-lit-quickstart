@@ -1,0 +1,24 @@
+{
+  "name": "basic",
+  "version": "0.0.1",
+  "description": "Created with create-ts-starter",
+  "scripts": {
+    "build": "tsc",
+    "start": "node -r ts-node/register --env-file=.env.dev src/index.ts",
+    "start:prod": "node dist/index.js",
+    "shell": "node -r ts-node/register",
+    "test": "node -r ts-node/register --env-file=.env.test --test **/*.spec.ts"
+  },
+  "keywords": [],
+  "author": "create-ts-starter",
+  "license": "ISC",
+  "devDependencies": {
+    "@swc/core": "^1.4.12",
+    "@swc/helpers": "^0.5.8",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.12.4",
+    "regenerator-runtime": "^0.14.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.4"
+  }
+}
