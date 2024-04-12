@@ -15,8 +15,9 @@
     "templates"
   ],
   "scripts": {
+    "build": "tsup src/index.ts",
     "start": "tsup --watch src/index.ts",
-    "build": "tsup src/index.ts"
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
