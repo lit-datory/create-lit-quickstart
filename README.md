@@ -3,17 +3,20 @@
 Create Typescript apps with no build configuration.
 
 ## Quick overview
+
 ```shell
-npx create-lit-quickstart my-app
+npx create-lit-quickstart@latest my-app
 cd my-app
 make up
 ```
 
 You can also choose a template
+
 ```shell
-npx create-lit-quickstart my-app --template=basic
+npx create-lit-quickstart@latest my-app --template=basic
 ```
 
 ## Templates
-### Basic
-Only contains dev dependencies so you can get started using node with typescript.
+| Category | Description                                                  |
+| -------- | ------------------------------------------------------------ |
+| Basic    | Setup for node with typescript, with docker dev environment. |
