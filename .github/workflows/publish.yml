@@ -56,6 +56,8 @@ jobs:
   create_release:
     needs: publish
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: ${{ needs.publish.result == 'success' }}
     steps:
       - name: Checkout
