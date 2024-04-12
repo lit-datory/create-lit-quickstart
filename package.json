@@ -1,14 +1,14 @@
 {
-  "name": "create-lit-starter",
+  "name": "create-lit-quickstart",
   "version": "0.0.1",
   "description": "This is a starter for basic typescript application.",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/lit-datory/create-ts-starter.git"
+    "url": "git+ssh://git@github.com/lit-datory/create-lit-quickstart.git"
   },
   "main": "dist/index.js",
   "bin": {
-    "create-lit-starter": "dist/index.js"
+    "create-lit-quickstart": "dist/index.js"
   },
   "files": [
     "dist/index.js",
