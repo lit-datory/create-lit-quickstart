@@ -8,17 +8,26 @@
     "start": "node -r ts-node/register --env-file=.env.dev src/index.ts",
     "start:prod": "node dist/index.js",
     "shell": "node -r ts-node/register",
-    "test": "node -r ts-node/register --env-file=.env.test --test **/*.spec.ts"
+    "test": "node -r ts-node/register --env-file=.env.test --test **/*.spec.ts",
+    "lint": "eslint src --max-warnings 0 --report-unused-disable-directives",
+    "lint:fix": "npm run lint -- --fix"
   },
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.0.0",
     "@swc/core": "^1.4.12",
     "@swc/helpers": "^0.5.8",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.12.4",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "globals": "^15.0.0",
+    "prettier": "3.2.5",
     "regenerator-runtime": "^0.14.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.4",
+    "typescript-eslint": "^7.6.0"
   }
 }
