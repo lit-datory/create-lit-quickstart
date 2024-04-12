@@ -19,18 +19,20 @@ program
     const template = program.opts().template || "basic"
     const sourceDir = path.resolve(__dirname, "..", "templates", template)
     const targetDir = path.join(process.cwd(), targetName)
-    const envFilePath = path.join(targetDir, ".env")
-    const gitIgnorePath = path.join(targetDir, ".gitignore")
 
     try {
       console.log("Copy over the directory")
       await copyDirectory(sourceDir, targetDir)
 
       console.log("Setting up env files")
+      const envFilePath = path.join(targetDir, ".env")
       fs.writeFileSync(envFilePath, `APP_NAME=${targetName}\n`)
-      fs.appendFileSync(gitIgnorePath, ".env\n", { flag: "a" })
-      fs.appendFileSync(gitIgnorePath, ".env.dev\n", { flag: "a" })
-      fs.appendFileSync(gitIgnorePath, ".env.test\n", { flag: "a" })
+
+      console.log("Update .gitignore")
+      const gitIgnorePath = path.join(targetDir, ".gitignore")
+      fs.appendFileSync(gitIgnorePath, ".env\n")
+      fs.appendFileSync(gitIgnorePath, ".env.dev\n")
+      fs.appendFileSync(gitIgnorePath, ".env.test\n")
 
       console.log("Set package.json name and author")
       const copiedPackageJSONPath = path.join(targetDir, "package.json")
