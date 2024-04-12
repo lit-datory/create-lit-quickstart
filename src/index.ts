@@ -28,9 +28,9 @@ program
 
       console.log("Setting up env files")
       fs.writeFileSync(envFilePath, `APP_NAME=${targetName}\n`)
-      fs.appendFileSync(gitIgnorePath, ".env\n")
-      fs.appendFileSync(gitIgnorePath, ".env.dev\n")
-      fs.appendFileSync(gitIgnorePath, ".env.test\n")
+      fs.appendFileSync(gitIgnorePath, ".env\n", { flag: "a" })
+      fs.appendFileSync(gitIgnorePath, ".env.dev\n", { flag: "a" })
+      fs.appendFileSync(gitIgnorePath, ".env.test\n", { flag: "a" })
 
       console.log("Set package.json name and author")
       const copiedPackageJSONPath = path.join(targetDir, "package.json")
