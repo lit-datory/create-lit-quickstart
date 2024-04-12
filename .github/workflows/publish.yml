@@ -12,13 +12,15 @@ on:
         - major
 
 jobs:
-  publish:
+  bump_version:
     permissions:
       contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          ref: master
 
       - name: Update version in package.json.
         uses: 'phips28/gh-action-bump-version@master'
@@ -26,6 +28,40 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           version-type:  ${{github.event.inputs.version-type}}
+
+  publish:
+    needs: bump_version
+    runs-on: ubuntu-latest
+    if: ${{ needs.bump_version.result == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies and build 🔧
+        run: npm ci && npm run build
+
+      - name: Publish package 📦
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+  create_release:
+    needs: publish
+    runs-on: ubuntu-latest
+    if: ${{ needs.publish.result == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: master
 
       - name: Get version from package.json
         id: get_version
@@ -39,18 +75,6 @@ jobs:
           tag_name: ${{ steps.get_version.outputs.version }}
           release_name: Release ${{ steps.get_version.outputs.version }}
           body: |
-            This is the release for version ${{ steps.get_version.outputs.version }}.
+            This is the release for version ${{ needs.bump_version.outputs.get_version }}.
           draft: false
           prerelease: false
-
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20.x'
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install dependencies and build 🔧
-        run: npm ci && npm run build
-
-      - name: Publish package 📦
-        run: npm publish
