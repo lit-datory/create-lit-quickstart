@@ -1,20 +1,23 @@
 start:
-	@docker compose start $(service)
+	@docker compose start app
 
 stop:
-	@docker compose stop $(service)
+	@docker compose stop app
 
 restart:
-	@docker compose restart $(service)
+	@docker compose restart app
 
 up:
 	@docker compose up -d
 
 log:
-	@docker compose logs -f $(service)
+	@docker compose logs -f app
 
 build:
 	@docker compose build
 
 shell:
-	@docker compose run --rm --no-deps $(service) sh
+	@docker compose run --rm --no-deps app sh
+
+install:
+	@docker compose run --rm --no-deps app sh -c "npm install"

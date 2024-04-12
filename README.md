@@ -7,7 +7,6 @@ Create Typescript apps with no build configuration.
 ```shell
 npx create-lit-quickstart@latest my-app
 cd my-app
-make up
 ```
 
 You can also choose a template
@@ -17,6 +16,7 @@ npx create-lit-quickstart@latest my-app --template=basic
 ```
 
 ## Templates
-| Category | Description                                                  |
-| -------- | ------------------------------------------------------------ |
-| Basic    | Setup for node with typescript, with docker dev environment. |
+
+| Category | Description                                                  | Requirements |
+| -------- | ------------------------------------------------------------ | ------------ |
+| Basic    | Setup for node with typescript, with docker dev environment. | Git, Docker  |

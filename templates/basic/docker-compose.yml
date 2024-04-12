@@ -1,6 +1,6 @@
 services:
   app:
-    container_name: basic
+    container_name: ${APP_NAME}
     stdin_open: true
     build: .
     ports:
