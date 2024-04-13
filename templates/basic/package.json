@@ -9,7 +9,7 @@
     "start:prod": "node dist/index.js",
     "shell": "node -r ts-node/register",
     "test": "node -r ts-node/register --env-file=.env.test --test **/*.spec.ts",
-    "lint": "eslint src --max-warnings 0 --report-unused-disable-directives",
+    "lint": "eslint . --max-warnings 0 --report-unused-disable-directives",
     "lint:fix": "npm run lint -- --fix"
   },
   "keywords": [],
