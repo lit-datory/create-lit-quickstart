@@ -77,6 +77,6 @@ jobs:
           tag_name: ${{ steps.get_version.outputs.version }}
           release_name: Release ${{ steps.get_version.outputs.version }}
           body: |
-            This is the release for version ${{ needs.bump_version.outputs.get_version }}.
+            This is the release for version ${{ steps.get_version.outputs.version }}.
           draft: false
           prerelease: false
